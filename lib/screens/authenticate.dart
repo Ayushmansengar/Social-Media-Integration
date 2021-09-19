@@ -1,6 +1,4 @@
 
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:socialmedia2/services/auth.dart';
@@ -88,7 +86,15 @@ class _AuthenticateState extends State<Authenticate> {
 
                 ElevatedButton.icon(
                   onPressed: () async{
-                    // await _auth.signInWithFacebook();
+                    setState(() {
+                      loading = true;
+                    });
+
+                    await _auth.signInWithFacebook().whenComplete(() => null);
+
+                    setState(() {
+                      loading = false;
+                    });
                   },
                   icon: Image.asset(
                     'assets/facebook.png',

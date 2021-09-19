@@ -29,6 +29,8 @@ dependencies:
   provider:
   google_sign_in:
   flutter_spinkit:
+  flutter_facebook_auth:
+  http: ^0.13.3
 
 
 

@@ -14,11 +14,17 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
 
   final AuthService _auth = AuthService();
-  User? user = FirebaseAuth.instance.currentUser;
+  User? user =  FirebaseAuth.instance.currentUser;
+
+  String name =  FirebaseAuth.instance.currentUser!.displayName as String;
+  String email = FirebaseAuth.instance.currentUser!.email == null ? 'Not Available': FirebaseAuth.instance.currentUser!.email as String;
+
 
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       backgroundColor: Colors.yellow[100],
       appBar: AppBar(
@@ -56,8 +62,9 @@ class _HomeState extends State<Home> {
 
               Center(
                 child: CircleAvatar(
-                  backgroundImage: NetworkImage('${user!.photoURL}'),
+                  backgroundImage: NetworkImage('${user!.photoURL}',),
                   radius: 60.0,
+
                 ),
               ),
 
@@ -76,7 +83,7 @@ class _HomeState extends State<Home> {
               SizedBox(height: 10.0,),
 
               Text(
-                '${user!.displayName}',
+                '${name}',
                 style: TextStyle(
                   letterSpacing: 2.0,
                   fontSize: 20.0,
@@ -95,7 +102,7 @@ class _HomeState extends State<Home> {
                   SizedBox(width: 10.0,),
 
                   Text(
-                    '${user!.email}',
+                    '${email}',
                   ),
                 ],
               )

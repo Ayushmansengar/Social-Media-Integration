@@ -20,7 +20,6 @@ class _WrapperState extends State<Wrapper> {
 
     final user = Provider.of<User?>(context);
 
-
     if(user == null)
     {
       return Authenticate();
